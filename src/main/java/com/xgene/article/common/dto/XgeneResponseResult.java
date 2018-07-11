@@ -1,6 +1,6 @@
-package com.xgene.common.dto;
+package com.xgene.article.common.dto;
 
-import com.xgene.common.exception.ErrorStatusCode;
+import com.xgene.article.common.exception.ErrorStatusCode;
 
 import java.io.Serializable;
 
@@ -25,7 +25,7 @@ public class XgeneResponseResult<T> implements Serializable {
      * @return
      */
     public static <T> XgeneResponseResult<T> success(T data){
-        return new XgeneResponseResult<T>( ErrorStatusCode.SYSTEM_OK,data);
+        return new XgeneResponseResult<T>( ErrorStatusCode.SYSTEM_SUCCESS,data);
     }
 
 

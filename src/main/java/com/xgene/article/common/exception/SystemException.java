@@ -1,4 +1,4 @@
-package com.xgene.common.exception;
+package com.xgene.article.common.exception;
 
 public class SystemException extends RuntimeException {
     private ErrorStatusCode statusCode;

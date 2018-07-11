@@ -1,4 +1,4 @@
-package com.xgene.common.xgene;
+package com.xgene.article.common.xgene;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

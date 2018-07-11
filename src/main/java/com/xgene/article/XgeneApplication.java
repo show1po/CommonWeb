@@ -1,4 +1,4 @@
-package com.xgene.common.xgene;
+package com.xgene.article;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +26,7 @@ public class XgeneApplication {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.xgene.common.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.xgene.article.controller"))
 				.paths(PathSelectors.any())
 				.build();
 	}

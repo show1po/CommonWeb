@@ -1,4 +1,4 @@
-package com.xgene.common.exception;
+package com.xgene.article.common.exception;
 
 /**
  * Created by lailai on 2017/9/19.
