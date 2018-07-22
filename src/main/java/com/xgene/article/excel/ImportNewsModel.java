@@ -1,21 +1,30 @@
 package com.xgene.article.excel;
 
 import com.xgene.article.dto.resp.basemodel.ReactPageableColumn;
+import com.xgene.article.dto.resp.basemodel.ReactTableDataFormat;
 
 //@Data
 public class ImportNewsModel {
     @ReactPageableColumn(text = "ID")
     private String id;
-    @ReactPageableColumn(text = "標題")
+//    @ReactPageableColumn(text = "標題",dataFormat = ReactTableDataFormat.LinkFormatter)
     private String title;
+    @ReactPageableColumn(text = "標題",dataFormat = ReactTableDataFormat.LinkFormatter)
+    private String titleInReact;
     @ReactPageableColumn(text = "分類")
     private String category;
     @ReactPageableColumn(text = "摘要")
     private String summary;
-    @ReactPageableColumn(text = "來源")
+//    @ReactPageableColumn(text = "來源")
     private String url;
-    @ReactPageableColumn(text = "分類來源")
+//    @ReactPageableColumn(text = "分類來源")
     private String categoryUrl;
+    @ReactPageableColumn(text = "讚數",dataFormat = ReactTableDataFormat.PriceFormatter)
+    private int likeNumber;
+    @ReactPageableColumn(text = "噓數")
+    private int dislikeNumber;
+    @ReactPageableColumn(text = "閱讀數")
+    private int readingNumber;
 
     public String getId() {
         return id;
@@ -63,5 +72,37 @@ public class ImportNewsModel {
 
     public void setCategoryUrl(String categoryUrl) {
         this.categoryUrl = categoryUrl;
+    }
+
+    public int getLikeNumber() {
+        return likeNumber;
+    }
+
+    public void setLikeNumber(int likeNumber) {
+        this.likeNumber = likeNumber;
+    }
+
+    public int getDislikeNumber() {
+        return dislikeNumber;
+    }
+
+    public void setDislikeNumber(int dislikeNumber) {
+        this.dislikeNumber = dislikeNumber;
+    }
+
+    public int getReadingNumber() {
+        return readingNumber;
+    }
+
+    public void setReadingNumber(int readingNumber) {
+        this.readingNumber = readingNumber;
+    }
+
+    public String getTitleInReact() {
+        return titleInReact;
+    }
+
+    public void setTitleInReact(String titleInReact) {
+        this.titleInReact = titleInReact;
     }
 }

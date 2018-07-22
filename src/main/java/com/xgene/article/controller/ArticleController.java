@@ -16,9 +16,9 @@ public class ArticleController extends XgeneResponse {
     private TransferFacade transferFacade;
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @RequestMapping(value = "/find",method = {RequestMethod.GET,RequestMethod.POST})
-    public String findArticles(@RequestBody QueryArticleReq queryArticleReq){
-        return success(topicService.load());
+    @RequestMapping(value = "/find",method = {RequestMethod.POST})
+    public String findArticles(@RequestBody QueryArticleReq queryArticleReq)throws Exception{
+            return success(topicService.query(queryArticleReq));
     }
     @RequestMapping(value = "/create",method = RequestMethod.GET)
     public String createArticle(){

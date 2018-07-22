@@ -8,8 +8,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface ReactPageableColumn {
-    public String dataField() default "";
-    public String text() default "";
-    public boolean sort() default true;
-
+    String dataField() default "";
+    String text() default "";
+    boolean sort() default true;
+    ReactTableDataFormat dataFormat() default ReactTableDataFormat.NoFormatter;
 }

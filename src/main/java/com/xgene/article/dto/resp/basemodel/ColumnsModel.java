@@ -7,6 +7,7 @@ public class ColumnsModel {
     private String dataField;
     private String text;
     private boolean sort= true;
+    private String dataFormat;
 
     public ColumnsModel(String dataField, String text) {
         this.dataField = dataField;
@@ -17,5 +18,12 @@ public class ColumnsModel {
         this.dataField = dataField;
         this.text = text;
         this.sort = sort;
+    }
+
+    public ColumnsModel(String dataField, String text, boolean sort, String dataFormat) {
+        this.dataField = dataField;
+        this.text = text;
+        this.sort = sort;
+        this.dataFormat = dataFormat;
     }
 }

@@ -9,6 +9,7 @@ import java.util.Objects;
 public class ImportnewsEntity {
     private int id;
     private String title;
+    private Object titleInReact;
     private String category;
     private String summary;
     private String url;
@@ -18,6 +19,14 @@ public class ImportnewsEntity {
     private int readingNumber;
     private Timestamp createTime;
     private Timestamp updateTime;
+    @Transient
+    public Object getTitleInReact() {
+        return titleInReact;
+    }
+
+    public void setTitleInReact(Object titleInReact) {
+        this.titleInReact = titleInReact;
+    }
 
     @Id
     @Column(name = "id", nullable = false)

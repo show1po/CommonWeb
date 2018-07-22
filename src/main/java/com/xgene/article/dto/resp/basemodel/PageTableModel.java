@@ -25,7 +25,8 @@ public class PageTableModel<E>{
                 boolean sort = reactPageableColumn.sort();
                 String dataField = StringUtils.isNotEmpty(reactPageableColumn.dataField()) ? reactPageableColumn.dataField() : field.getName();
                 String text = StringUtils.isNotEmpty(reactPageableColumn.text()) ? reactPageableColumn.text(): field.getName();
-                columns.add(new ColumnsModel(dataField, text, sort));
+                String dataFormat=reactPageableColumn.dataFormat()==null?null:reactPageableColumn.dataFormat().getValue();
+                columns.add(new ColumnsModel(dataField, text, sort,dataFormat));
             }
         }
     }
