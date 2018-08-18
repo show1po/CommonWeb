@@ -5,6 +5,7 @@ public class QueryArticleReq {
     private Integer id;
     @QueryModelProperty(operator = ComparisonOperator.like)
     private String title;
+    @QueryModelProperty(operator = ComparisonOperator.like)
     private String category;
     private String summary;
     @QueryModelProperty(type = QueryModelProperty.Type.INTEGER,operator = ComparisonOperator.gt)
@@ -15,6 +16,15 @@ public class QueryArticleReq {
     private Integer readingNumber;
     private String url;
     private String categoryUrl;
+    private Integer userId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getId() {
         return id;

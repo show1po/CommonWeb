@@ -1,9 +1,9 @@
 package com.xgene.article.common.handler;
 
-import com.xgene.article.controller.XgeneResponse;
 import com.xgene.article.common.exception.ErrorInfo;
 import com.xgene.article.common.exception.ErrorStatusCode;
 import com.xgene.article.common.exception.SystemException;
+import com.xgene.article.controller.XgeneResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -68,7 +68,7 @@ public class GlobalExceptionHandler extends XgeneResponse {
 //        return data;
 //    }
 //
-    @ExceptionHandler(value = SystemException.class)
+    @ExceptionHandler(value = {SystemException.class,IllegalArgumentException.class})
     @ResponseBody
     public String systemExceptionHandler(HttpServletRequest request, SystemException fe)throws SystemException {
         return failure(fe.getStatusCode(), fe.getMessage());

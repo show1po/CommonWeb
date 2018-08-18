@@ -8,6 +8,7 @@ import java.util.List;
 
 public class PageTableModel<E>{
     private List<ColumnsModel> columns= Lists.newArrayList();
+    private List<ReactAntdColumnsModel> antdColumns= Lists.newArrayList();
     private List<E> products;
 
     public PageTableModel(List<E> products,Class<?> aClass) {
@@ -28,6 +29,16 @@ public class PageTableModel<E>{
                 String dataFormat=reactPageableColumn.dataFormat()==null?null:reactPageableColumn.dataFormat().getValue();
                 columns.add(new ColumnsModel(dataField, text, sort,dataFormat));
             }
+            ReactAntdPageableColumn reactAntdPageableColumn = field.getAnnotation(ReactAntdPageableColumn.class);
+            if (reactAntdPageableColumn != null) {
+                String dataFormat = reactAntdPageableColumn.dataFormat() == null ? null : reactAntdPageableColumn.dataFormat().getValue();
+                String key = StringUtils.isNotEmpty(reactAntdPageableColumn.key()) ? reactAntdPageableColumn.key() : field.getName();
+                String dataIndex = StringUtils.isNotEmpty(reactAntdPageableColumn.dataIndex()) ? reactAntdPageableColumn.dataIndex() : field.getName();
+                String title = StringUtils.isNotEmpty(reactAntdPageableColumn.title()) ? reactAntdPageableColumn.title() : field.getName();
+                boolean sorter = reactAntdPageableColumn.sorter();
+                antdColumns.add(new ReactAntdColumnsModel(dataIndex,title,key,sorter,dataFormat));
+
+            }
         }
     }
 
@@ -45,5 +56,13 @@ public class PageTableModel<E>{
 
     public void setProducts(List<E> products) {
         this.products = products;
+    }
+
+    public List<ReactAntdColumnsModel> getAntdColumns() {
+        return antdColumns;
+    }
+
+    public void setAntdColumns(List<ReactAntdColumnsModel> antdColumns) {
+        this.antdColumns = antdColumns;
     }
 }

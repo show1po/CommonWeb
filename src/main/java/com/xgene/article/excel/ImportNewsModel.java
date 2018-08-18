@@ -1,29 +1,38 @@
 package com.xgene.article.excel;
 
+import com.xgene.article.dto.resp.basemodel.ReactAntdPageableColumn;
 import com.xgene.article.dto.resp.basemodel.ReactPageableColumn;
 import com.xgene.article.dto.resp.basemodel.ReactTableDataFormat;
 
 //@Data
 public class ImportNewsModel {
     @ReactPageableColumn(text = "ID")
+    @ReactAntdPageableColumn(title = "ID")
     private String id;
+    @ReactAntdPageableColumn(title = "標題",dataFormat = ReactTableDataFormat.LinkFormatter)
 //    @ReactPageableColumn(text = "標題",dataFormat = ReactTableDataFormat.LinkFormatter)
     private String title;
     @ReactPageableColumn(text = "標題",dataFormat = ReactTableDataFormat.LinkFormatter)
+
     private String titleInReact;
     @ReactPageableColumn(text = "分類")
+    @ReactAntdPageableColumn(title = "分類")
     private String category;
     @ReactPageableColumn(text = "摘要")
+    @ReactAntdPageableColumn(title = "摘要")
     private String summary;
 //    @ReactPageableColumn(text = "來源")
     private String url;
 //    @ReactPageableColumn(text = "分類來源")
     private String categoryUrl;
     @ReactPageableColumn(text = "讚數",dataFormat = ReactTableDataFormat.PriceFormatter)
+    @ReactAntdPageableColumn(title = "讚數")
     private int likeNumber;
     @ReactPageableColumn(text = "噓數")
+    @ReactAntdPageableColumn(title = "噓數")
     private int dislikeNumber;
     @ReactPageableColumn(text = "閱讀數")
+    @ReactAntdPageableColumn(title = "閱讀數")
     private int readingNumber;
 
     public String getId() {

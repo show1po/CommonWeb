@@ -5,8 +5,10 @@ import com.xgene.article.dto.req.QueryArticleReq;
 import com.xgene.article.dto.resp.basemodel.PageTableModel;
 import com.xgene.article.excel.ImportNews;
 import com.xgene.article.excel.ImportNewsModel;
+import com.xgene.article.persistence.UserReflectionRepository;
 import com.xgene.article.po.ImportnewsEntity;
 import com.xgene.article.persistence.ImportnewsRepository;
+import com.xgene.article.po.UserReflectionEntity;
 import com.xgene.article.util.QueryConditionGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -21,6 +23,9 @@ public class TopicService {
     @Autowired
     private ImportnewsRepository importnewsRepository;
 
+    @Autowired
+    private UserReflectionRepository userReflectionRepository;
+
     public PageTableModel<ImportNewsModel>  load(){
         List<ImportNewsModel> datas = ImportNews.list();
         PageTableModel<ImportNewsModel> listPageTableModel = new PageTableModel(datas,ImportNewsModel.class);
@@ -30,10 +35,15 @@ public class TopicService {
 
     public PageTableModel<ImportNewsModel> query(QueryArticleReq queryArticleReq) throws Exception {
         List<ImportnewsEntity> datas = importnewsRepository.findAll(QueryConditionGenerator.<QueryArticleReq, ImportnewsEntity>create(queryArticleReq));
-        datas.parallelStream().forEach(data->{
-            data.setCategory(String.format("<a href=\"%s\">%s</a>",data.getCategoryUrl(),data.getCategory()));
-            data.setTitleInReact(String.format("<a href=\"%s\">%s</a>",data.getUrl(),data.getTitle()));
-        });
+        List<UserReflectionEntity> userReflections = userReflectionRepository.findAllByUserId(queryArticleReq.getUserId() == null ? 0 : queryArticleReq.getUserId());
+        for (UserReflectionEntity userReflection : userReflections) {
+            datas.forEach(data->{
+                if(data.getId()==userReflection.getImportnewsId()){
+                    data.setLikes(userReflection.getLikes());
+                    data.setDislike(userReflection.getDislike());
+                }
+            });
+        }
         PageTableModel<ImportNewsModel> listPageTableModel = new PageTableModel(datas,ImportNewsModel.class);
         return listPageTableModel;
     }

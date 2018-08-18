@@ -24,6 +24,27 @@ public class ImportnewsEntity {
         return titleInReact;
     }
 
+    @Transient
+    public boolean likes = false;
+    @Transient
+    public boolean dislike = false;
+
+    public boolean isLikes() {
+        return likes;
+    }
+
+    public void setLikes(boolean likes) {
+        this.likes = likes;
+    }
+
+    public boolean isDislike() {
+        return dislike;
+    }
+
+    public void setDislike(boolean dislike) {
+        this.dislike = dislike;
+    }
+
     public void setTitleInReact(Object titleInReact) {
         this.titleInReact = titleInReact;
     }

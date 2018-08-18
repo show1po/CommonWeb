@@ -5,8 +5,8 @@ import com.xgene.article.service.TopicService;
 import com.xgene.article.facade.TransferFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
+@RequestMapping(value = "/article")
 public class ArticleController extends XgeneResponse {
 
     @Autowired
@@ -15,10 +15,10 @@ public class ArticleController extends XgeneResponse {
     @Autowired
     private TransferFacade transferFacade;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @RequestMapping(value = "/find",method = {RequestMethod.POST})
     public String findArticles(@RequestBody QueryArticleReq queryArticleReq)throws Exception{
-            return success(topicService.query(queryArticleReq));
+        return success(topicService.query(queryArticleReq));
     }
     @RequestMapping(value = "/create",method = RequestMethod.GET)
     public String createArticle(){
